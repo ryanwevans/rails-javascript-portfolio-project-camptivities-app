@@ -23,6 +23,7 @@ const bindClickHandlers = () => {
       event.preventDefault()
       $('#app_container').html('')
       let id = $(this).attr('data-id')
+      history.pushState(null, null, `camps/${id}`);
       fetch(`/camps/${id}.json`)
       .then(response => response.json())
       .then(camp => {
@@ -35,14 +36,14 @@ const bindClickHandlers = () => {
 
     $('#new_camp_form').on("submit", function(event) {
       event.preventDefault()
+      $('#app_container').html('')
 
       const values = $(this).serialize()
 
       $.post("/camps", values).done(function(data) {
-        $('#app_container').html('')
         const newCamp = new Camp(data)
         const htmlToAdd = newCamp.formatShow()
-        $('#app_container').html(htmlToAdd)
+        $('#app_container').append(htmlToAdd)
       })
     })
   }
@@ -87,5 +88,3 @@ const bindClickHandlers = () => {
     `
     return campHtml;
   };
-
-}

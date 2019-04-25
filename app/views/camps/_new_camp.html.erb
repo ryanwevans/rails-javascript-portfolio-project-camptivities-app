@@ -1,4 +1,4 @@
-<%= form_for camp do |f| %>
+<%= form_for camp, :html => {:id => 'new_camp_form'} do |f| %>
   <%= f.label :name, "Camp Name" %>
   <br>
   <%= f.text_field :name %>
