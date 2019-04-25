@@ -10,25 +10,25 @@ const bindClickHandlers = () => {
     fetch('/camps.json')
       .then(response => response.json())
       .then(camps => {
-        $('#app-container').html('')
+        $('#app_container').html('')
         camps.forEach(camp => {
           let newCamp = new Camp(camp)
           let campHtml = newCamp.formatIndex()
-          $('#app-container').append(campHtml)
+          $('#app_container').append(campHtml)
       })
     })
   })
 
     $(document).on('click', ".show_link", function(event) {
       event.preventDefault()
-      $('#app-container').html('')
+      $('#app_container').html('')
       let id = $(this).attr('data-id')
       fetch(`/camps/${id}.json`)
       .then(response => response.json())
       .then(camp => {
         let newCamp = new Camp(camp)
         let campHtml = newCamp.formatShow()
-        $('#app-container').append(campHtml)
+        $('#app_container').append(campHtml)
       })
     })
 
@@ -39,10 +39,10 @@ const bindClickHandlers = () => {
       const values = $(this).serialize()
 
       $.post("/camps", values).done(function(data) {
-        $('#app-container').html('')
+        $('#app_container').html('')
         const newCamp = new Camp(data)
         const htmlToAdd = newCamp.formatShow()
-        $('#app-container').html(htmlToAdd)
+        $('#app_container').html(htmlToAdd)
       })
     })
   }
