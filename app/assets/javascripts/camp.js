@@ -48,6 +48,23 @@ const bindClickHandlers = () => {
     })
   }
 
+// for the activities show link in a Camp view
+  $(document).on('click', ".show_activities_link", function(event) {
+    event.preventDefault()
+    $('#app_container').html('')
+    let id = $(this).attr('data-id')
+    history.pushState(null, null, `camps/${id}/activities`);
+    fetch(`/camps/${id}/activities.json`)
+    .then(response => response.json())
+    .then(activities => {
+      $('#app_container').html('')
+      activities.forEach(activity => {
+        let newActivity = new Activity(activity)
+        let activityHtml = newActivity.formatIndex()
+        $('#app_container').append(activityHtml)
+      })
+    })
+
 
   function Camp(camp) {
     this.id = camp.id
@@ -84,6 +101,9 @@ const bindClickHandlers = () => {
       <h3>${this.location}</h3>
       ${this.description}
       </div>
+      <p style="text-align:center;">
+        <a href="/camps/${this.id}/activities" data-id="${this.id}" class="show_activities_link">View ${this.name} Activities</a>
+      </p>
 
     `
     return campHtml;
