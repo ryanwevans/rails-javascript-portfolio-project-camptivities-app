@@ -18,7 +18,7 @@
     </header>
 		<nav>
       <% if logged_in? %>
-        <%= link_to "Camps", camps_path %>
+        <%= link_to "Camps", camps_path, id: "all_camps" %>
         <%= link_to "Activities", activities_path %>
         <%= link_to "Assignments", assignments_path %>
         <%= link_to "My Profile", camp_counselor_path(:current_user) %>
