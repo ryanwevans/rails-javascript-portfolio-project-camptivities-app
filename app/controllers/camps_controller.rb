@@ -4,9 +4,11 @@ class CampsController < ApplicationController
 
   def index
     @camps = Camp.all
+    render json: @camps
   end
 
   def show
+    render json: @camp
   end
 
   def new
@@ -16,7 +18,7 @@ class CampsController < ApplicationController
   def create
     @camp = Camp.create(camp_params)
     if @camp.save
-      redirect_to camp_path(@camp)
+      render json: @camp
     else
       render :new
     end
