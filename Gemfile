@@ -3,6 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.3.0'
 
+gem 'active_model_serializers', '~> 0.10.0'
+
+gem 'jquery-rails'
+
 gem "rack", ">= 2.0.6"
 gem "loofah", ">= 2.2.3"
 # Used to mock an https url
