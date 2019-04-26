@@ -82,7 +82,7 @@ Camp.prototype.formatShow = function() {
   return (`
     <h2>${this.name}</h2>
     <br>
-    <div>
+    <div class="subtext">
     <h3>${this.location}</h3>
     ${this.description}
     </div>
