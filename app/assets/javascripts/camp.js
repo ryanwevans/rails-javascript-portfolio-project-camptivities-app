@@ -19,6 +19,7 @@ const bindClickHandlers = () => {
     })
   })
 
+
   $(document).on('click', ".show_link", function(event) {
     event.preventDefault()
     $('#app_container').html('')
@@ -46,7 +47,7 @@ const bindClickHandlers = () => {
       $('#app_container').append(htmlToAdd)
     })
   })
-
+}
 
 function Camp(camp) {
   this.id = camp.id
@@ -58,7 +59,7 @@ function Camp(camp) {
 
 
 Camp.prototype.formatIndex = function() {
-  let campsHtml = `
+  return (`
     <h3 style="font-weight:500;">${this.location}</h3>
     <p>
     <strong>
@@ -71,8 +72,7 @@ Camp.prototype.formatIndex = function() {
     <br>
     <br>
     </p>
-  `
-  return campsHtml;
+  `)
 };
 
 
@@ -89,13 +89,13 @@ Camp.prototype.formatShow = function() {
     <br>
       ${
         campActivities.map(activity => {
-          return `
+          return (`
             ${activity.name}
             <br>
             ${activity.description}
             <br>
             <br>
-          `
+          `)
         }).join('')
       }
   `)

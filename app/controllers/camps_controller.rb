@@ -4,11 +4,17 @@ class CampsController < ApplicationController
 
   def index
     @camps = Camp.all
-    render json: @camps
+    respond_to do |f|
+      f.html
+      f.json {render json: @camps}
+    end
   end
 
   def show
-    render json: @camp
+    respond_to do |f|
+      f.html
+      f.json {render json: @camp}
+    end
   end
 
   def new
