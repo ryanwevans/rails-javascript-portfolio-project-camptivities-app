@@ -3,14 +3,15 @@ $(() => {
 })
 
 const bindClickHandlers = () => {
-
   $('#all_camps').on('click', function (event) {
     event.preventDefault()
     history.pushState(null, null, "camps");
     fetch('/camps.json')
       .then(response => response.json())
       .then(camps => {
+        $('#page_title').html('');
         $('#app_container').html('')
+        $('#page_title').append('<h2>Camps</h2><br>');
         camps.forEach(camp => {
           let newCamp = new Camp(camp)
           let campHtml = newCamp.formatIndex()
