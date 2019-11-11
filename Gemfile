@@ -8,7 +8,8 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'jquery-rails'
 
 gem "rack", ">= 2.0.6"
-gem "loofah", ">= 2.2.3"
+# gem "loofah", ">= 2.2.3"
+gem "loofah", ">= 2.3.1"
 # Used to mock an https url
 gem 'thin'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
